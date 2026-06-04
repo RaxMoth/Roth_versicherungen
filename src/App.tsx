@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
+
+// Roth Versicherungen section
 import RothVersicherungen from './pages/RothVersicherungen'
 import Firmenkunden from './pages/Firmenkunden'
 import CyberPolice from './pages/CyberPolice'
@@ -9,12 +11,19 @@ import Privatkunden from './pages/Privatkunden'
 import Tierkrankenversicherung from './pages/Tierkrankenversicherung'
 import WichtigeHinweise from './pages/WichtigeHinweise'
 import Jobs from './pages/Jobs'
-import Erstinformation from './pages/Erstinformation'
-import Datenschutz from './pages/Datenschutz'
-import Impressum from './pages/Impressum'
+import VersImpressum from './pages/versicherungen/Impressum'
+import VersDatenschutz from './pages/versicherungen/Datenschutz'
+import VersErstinformation from './pages/versicherungen/Erstinformation'
+
+// Roth Finanz section
 import RothFinanz from './pages/RothFinanz'
 import Altersversorgung from './pages/Altersversorgung'
 import Sterbegeldversicherung from './pages/Sterbegeldversicherung'
+import FinImpressum from './pages/finanz/Impressum'
+import FinDatenschutz from './pages/finanz/Datenschutz'
+import FinErstinformation from './pages/finanz/Erstinformation'
+
+// Shared / Allgemein
 import Team from './pages/Team'
 import Kontakt from './pages/Kontakt'
 import OnlineBeratung from './pages/OnlineBeratung'
@@ -26,6 +35,8 @@ const App: React.FC = () => (
         <Layout>
             <Routes>
                 <Route path="/" element={<Home />} />
+
+                {/* Roth Versicherungen */}
                 <Route
                     path="/roth-versicherungen"
                     element={<RothVersicherungen />}
@@ -51,9 +62,20 @@ const App: React.FC = () => (
                     element={<WichtigeHinweise />}
                 />
                 <Route path="/roth-versicherungen/jobs" element={<Jobs />} />
-                <Route path="/erstinformation" element={<Erstinformation />} />
-                <Route path="/datenschutz" element={<Datenschutz />} />
-                <Route path="/impressum" element={<Impressum />} />
+                <Route
+                    path="/roth-versicherungen/erstinformation"
+                    element={<VersErstinformation />}
+                />
+                <Route
+                    path="/roth-versicherungen/datenschutz"
+                    element={<VersDatenschutz />}
+                />
+                <Route
+                    path="/roth-versicherungen/impressum"
+                    element={<VersImpressum />}
+                />
+
+                {/* Roth Finanz */}
                 <Route path="/roth-finanz" element={<RothFinanz />} />
                 <Route
                     path="/roth-finanz/altersversorgung"
@@ -63,10 +85,25 @@ const App: React.FC = () => (
                     path="/roth-finanz/sterbegeldversicherung"
                     element={<Sterbegeldversicherung />}
                 />
+                <Route
+                    path="/roth-finanz/erstinformation"
+                    element={<FinErstinformation />}
+                />
+                <Route
+                    path="/roth-finanz/datenschutz"
+                    element={<FinDatenschutz />}
+                />
+                <Route
+                    path="/roth-finanz/impressum"
+                    element={<FinImpressum />}
+                />
+
+                {/* Shared */}
                 <Route path="/team" element={<Team />} />
                 <Route path="/kontakt-anfahrt" element={<Kontakt />} />
                 <Route path="/online-beratung" element={<OnlineBeratung />} />
                 <Route path="/service-app" element={<ServiceApp />} />
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Layout>

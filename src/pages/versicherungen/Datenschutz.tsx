@@ -1,22 +1,22 @@
 import React from 'react'
-import PageHero from '../components/PageHero'
-import Section from '../components/Section'
-import { IMAGES } from '../utils/company'
+import PageHero from '../../components/PageHero'
+import Section from '../../components/Section'
+import { VERSICHERUNGEN, IMAGES } from '../../utils/company'
 
 const Datenschutz: React.FC = () => (
     <>
         <PageHero
-            eyebrow="Datenschutz"
+            eyebrow="Roth Versicherungen › Datenschutz"
             title="Datenschutzerklärung."
-            subtitle="Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß DSGVO."
+            subtitle={`Informationen zur Verarbeitung Ihrer personenbezogenen Daten durch ${VERSICHERUNGEN.short} gemäß DSGVO.`}
             bgImage={IMAGES.datenschutz}
         />
 
         <Section title="Information zur Verwendung Ihrer Daten">
             <p className="text-stone-700 leading-relaxed text-lg max-w-3xl">
                 Versicherungsdaten sind sensible Daten. Wir wahren Ihre
-                Persönlichkeitsrechte. Daten werden nur übermittelt, wenn eine
-                rechtliche Notwendigkeit besteht oder dies für den
+                Persönlichkeits­rechte. Daten werden nur übermittelt, wenn
+                eine rechtliche Notwendigkeit besteht oder dies für den
                 Versicherungs­vertrag erforderlich ist.
             </p>
         </Section>
@@ -25,8 +25,8 @@ const Datenschutz: React.FC = () => (
             <p className="text-stone-700 leading-relaxed text-lg max-w-3xl">
                 Diese Richtlinie basiert auf der Europäischen
                 Datenschutz-Grundverordnung (DS-GVO) sowie dem
-                Bundesdatenschutzgesetz und gilt für Mitarbeiter, Kunden,
-                Interessenten und Dienstleister.
+                Bundesdatenschutz­gesetz und gilt für Mitarbeiter, Kunden,
+                Interessenten und Dienstleister von {VERSICHERUNGEN.name}.
             </p>
         </Section>
 
@@ -54,30 +54,44 @@ const Datenschutz: React.FC = () => (
             </p>
         </Section>
 
-        <Section title="9. Rechte von Betroffenen" bg="page">
-            <ul className="space-y-2 text-stone-700 text-lg">
+        <Section title="5. Sicherheit" bg="page">
+            <p className="text-stone-700 leading-relaxed text-lg max-w-3xl">
+                Wir treffen technische und organisatorische Maßnahmen
+                entsprechend dem aktuellen Stand der Technik, um Ihre Daten
+                gegen Verlust, Zerstörung, Zugriff, Veränderung oder
+                Verbreitung durch Unbefugte zu schützen.
+            </p>
+        </Section>
+
+        <Section title="6. Rechte von Betroffenen">
+            <ul className="space-y-2 text-stone-700 text-lg max-w-3xl">
                 <li>• Recht auf Auskunft</li>
                 <li>• Recht auf Berichtigung</li>
                 <li>• Recht auf Widerspruch</li>
-                <li>• Recht auf Datenlöschung</li>
+                <li>• Recht auf Datenlöschung (soweit rechtlich zulässig)</li>
+                <li>• Recht auf Datenübertragbarkeit</li>
+                <li>
+                    • Recht zur Beschwerde bei einer Aufsichtsbehörde
+                </li>
             </ul>
         </Section>
 
-        <Section title="10. Datenpannen">
+        <Section title="7. Datenpannen" bg="page">
             <p className="text-stone-700 leading-relaxed text-lg max-w-3xl">
                 Verstöße werden dem Datenschutzbeauftragten unverzüglich
-                gemeldet.
+                gemeldet, um den gesetzlichen Meldepflichten nachzukommen.
             </p>
         </Section>
 
-        <Section title="Beschwerdeverfahren" bg="page">
+        <Section title="Beschwerdeverfahren">
             <p className="text-stone-700 leading-relaxed text-lg max-w-3xl">
                 Beschwerden können bei der Hessischen Datenschutzbeauftragten
-                in Wiesbaden eingereicht werden (Tel.: +49 611 1408-0).
+                in Wiesbaden eingereicht werden (Postfach 3163, 65021
+                Wiesbaden, Tel.: +49 611 1408-0).
             </p>
         </Section>
 
-        <Section title="Cookie-Richtlinie">
+        <Section title="Cookie-Richtlinie" bg="page">
             <p className="text-stone-700 leading-relaxed text-lg max-w-3xl">
                 Diese Website nutzt nur technische Cookies. Profiling-Cookies
                 werden nicht verwendet.

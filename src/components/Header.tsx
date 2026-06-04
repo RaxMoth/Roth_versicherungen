@@ -4,16 +4,16 @@ import { Menu, X, Phone, Mail, Clock, ChevronDown } from 'lucide-react'
 import logoImage from '../assets/Roth_versicherungen_logo.png'
 import { COMPANY } from '../utils/company'
 
-type DropdownKey = 'A' | 'B' | 'C'
+type DropdownKey = 'V' | 'F' | 'A'
 
 const dropdownTitles: Record<DropdownKey, string> = {
-    A: 'Roth Versicherungen',
-    B: 'Roth Finanz',
-    C: 'Allgemeines',
+    V: 'Roth Versicherungen',
+    F: 'Roth Finanz',
+    A: 'Allgemein',
 }
 
 const dropdownLinks: Record<DropdownKey, { to: string; title: string }[]> = {
-    A: [
+    V: [
         { to: '/roth-versicherungen', title: 'Übersicht' },
         { to: '/roth-versicherungen/firmenkunden', title: 'Firmenkunden' },
         {
@@ -30,23 +30,29 @@ const dropdownLinks: Record<DropdownKey, { to: string; title: string }[]> = {
             title: 'Wichtige Hinweise',
         },
         { to: '/roth-versicherungen/jobs', title: 'Jobs' },
-        { to: '/erstinformation', title: 'Erstinformation' },
+        {
+            to: '/roth-versicherungen/erstinformation',
+            title: 'Erstinformation',
+        },
+        { to: '/roth-versicherungen/datenschutz', title: 'Datenschutz' },
+        { to: '/roth-versicherungen/impressum', title: 'Impressum' },
     ],
-    B: [
+    F: [
         { to: '/roth-finanz', title: 'Übersicht' },
         { to: '/roth-finanz/altersversorgung', title: 'Altersversorgung' },
         {
             to: '/roth-finanz/sterbegeldversicherung',
             title: 'Sterbegeldversicherung',
         },
+        { to: '/roth-finanz/erstinformation', title: 'Erstinformation' },
+        { to: '/roth-finanz/datenschutz', title: 'Datenschutz' },
+        { to: '/roth-finanz/impressum', title: 'Impressum' },
     ],
-    C: [
+    A: [
         { to: '/team', title: 'Unser Team' },
         { to: '/kontakt-anfahrt', title: 'Kontakt & Anfahrt' },
         { to: '/online-beratung', title: 'Online Beratung' },
         { to: '/service-app', title: 'Service App' },
-        { to: '/datenschutz', title: 'Datenschutz' },
-        { to: '/impressum', title: 'Impressum' },
     ],
 }
 
@@ -89,12 +95,18 @@ const Header: React.FC = () => {
             ref={navRef}
             className="fixed top-0 left-0 right-0 z-30 bg-white shadow-sm"
         >
-            {/* Top contact strip */}
             <div className="bg-stone-900 text-white text-xs md:text-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center gap-4 flex-wrap">
                     <p className="text-stone-200 hidden sm:block">
-                        Ihr Versicherungs­makler in Langen seit{' '}
-                        <span className="text-white font-semibold">1907</span>
+                        Versicherungen{' '}
+                        <span className="text-white font-semibold">
+                            seit 1907
+                        </span>{' '}
+                        · Finanz{' '}
+                        <span className="text-white font-semibold">
+                            seit 1970
+                        </span>{' '}
+                        · in Langen
                     </p>
                     <div className="flex items-center gap-5">
                         <a
@@ -178,47 +190,64 @@ const Header: React.FC = () => {
                             Willkommen
                         </Link>
                     </li>
-                    {(['A', 'B', 'C'] as DropdownKey[]).map(point => (
-                        <li className="relative" key={point}>
-                            <button
-                                type="button"
-                                onClick={() => toggle(point)}
-                                aria-haspopup="true"
-                                aria-expanded={openKey === point}
-                                className={`w-full md:w-auto text-left px-4 py-3 text-[15px] font-medium transition rounded-sm inline-flex items-center gap-1 ${
-                                    openKey === point
-                                        ? 'text-brand-red'
-                                        : 'text-stone-900 hover:text-brand-red'
-                                }`}
-                            >
-                                {dropdownTitles[point]}
-                                <ChevronDown
-                                    className={`h-4 w-4 transition-transform ${
-                                        openKey === point ? 'rotate-180' : ''
+                    {(['V', 'F', 'A'] as DropdownKey[]).map(point => {
+                        const sectionActive =
+                            (point === 'V' &&
+                                pathname.startsWith('/roth-versicherungen')) ||
+                            (point === 'F' &&
+                                pathname.startsWith('/roth-finanz')) ||
+                            (point === 'A' &&
+                                ['/team', '/kontakt-anfahrt', '/online-beratung', '/service-app'].some(
+                                    p => pathname.startsWith(p),
+                                ))
+                        return (
+                            <li className="relative" key={point}>
+                                <button
+                                    type="button"
+                                    onClick={() => toggle(point)}
+                                    aria-haspopup="true"
+                                    aria-expanded={openKey === point}
+                                    className={`w-full md:w-auto text-left px-4 py-3 text-[15px] font-medium transition rounded-sm inline-flex items-center gap-1 ${
+                                        openKey === point || sectionActive
+                                            ? 'text-brand-red'
+                                            : 'text-stone-900 hover:text-brand-red'
                                     }`}
-                                    aria-hidden="true"
-                                />
-                            </button>
-                            {openKey === point && (
-                                <ul
-                                    className="md:absolute md:right-0 md:w-72 mt-1 bg-white shadow-card border-t-2 border-brand-red z-20 list-none rounded-b-md overflow-hidden"
-                                    role="menu"
                                 >
-                                    {dropdownLinks[point].map(link => (
-                                        <li key={link.title} role="none">
-                                            <Link
-                                                to={link.to}
-                                                role="menuitem"
-                                                className="block px-5 py-3 text-[14px] text-stone-900 hover:bg-brand-page hover:text-brand-red border-b border-brand-line last:border-b-0"
-                                            >
-                                                {link.title}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </li>
-                    ))}
+                                    {dropdownTitles[point]}
+                                    <ChevronDown
+                                        className={`h-4 w-4 transition-transform ${
+                                            openKey === point
+                                                ? 'rotate-180'
+                                                : ''
+                                        }`}
+                                        aria-hidden="true"
+                                    />
+                                </button>
+                                {openKey === point && (
+                                    <ul
+                                        className="md:absolute md:right-0 md:w-72 mt-1 bg-white shadow-card border-t-2 border-brand-red z-20 list-none rounded-b-md overflow-hidden"
+                                        role="menu"
+                                    >
+                                        {dropdownLinks[point].map(link => (
+                                            <li key={link.title} role="none">
+                                                <Link
+                                                    to={link.to}
+                                                    role="menuitem"
+                                                    className={`block px-5 py-3 text-[14px] border-b border-brand-line last:border-b-0 ${
+                                                        pathname === link.to
+                                                            ? 'bg-brand-page text-brand-red font-semibold'
+                                                            : 'text-stone-900 hover:bg-brand-page hover:text-brand-red'
+                                                    }`}
+                                                >
+                                                    {link.title}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        )
+                    })}
                     <li className="md:ml-3">
                         <Link
                             to="/kontakt-anfahrt"

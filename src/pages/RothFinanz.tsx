@@ -10,22 +10,35 @@ const RothFinanz: React.FC = () => (
         <PageHero
             eyebrow="Roth Finanz"
             title="Ihr Vorsorge­spezialist."
-            subtitle="Seit 1970 Ihr Partner in Finanzfragen – mit Fokus auf Vorsorge, Sicherheit und langfristige Partnerschaft."
+            subtitle="Wir sind Ihr Partner in finanziellen Belangen seit 1970."
             bgImage={IMAGES.finanz}
         />
 
         <Section eyebrow="Philosophie" title="Mehr als nur Zahlen.">
             <div className="space-y-6 text-stone-700 text-lg leading-relaxed max-w-3xl">
                 <p>
-                    Bei Roth Finanz verstehen wir, dass Finanzmanagement weit
+                    Wir sind Ihr Partner in finanziellen Belangen{' '}
+                    <strong className="text-stone-900">seit 1970</strong>. Bei
+                    Roth Finanz verstehen wir, dass Finanzmanagement weit
                     mehr ist als nur Zahlen. Es geht darum, Ihre individuellen
-                    Ziele zu erkennen und maßgeschneiderte Lösungen rund um
-                    alle Arten der Vorsorge zu entwickeln.
+                    Ziele zu verstehen und maßgeschneiderte Lösungen
+                    anzubieten, die Ihnen helfen, diese Ziele zu erreichen.
                 </p>
                 <p>
-                    Wir setzen auf fachliche Kompetenz, Transparenz und
-                    persönlichen Service, um langfristige Partnerschaften zu
-                    schaffen, die Ihnen finanzielle Sicherheit ermöglichen.
+                    Für alle Arten der Vorsorge helfen wir Ihnen dabei, die
+                    richtige Absicherung zu finden.
+                </p>
+                <p>
+                    Unser Engagement gilt stets höchster Fachkompetenz,
+                    Transparenz und persönlicher Betreuung. Wir streben
+                    danach, langfristige Partnerschaften aufzubauen, indem
+                    wir unseren Kunden helfen, finanzielle Sicherheit zu
+                    erreichen.
+                </p>
+                <p>
+                    Kontaktieren Sie uns noch heute, um herauszufinden, wie
+                    wir Ihnen helfen können, Ihre finanziellen Ziele zu
+                    verwirklichen.
                 </p>
             </div>
         </Section>
