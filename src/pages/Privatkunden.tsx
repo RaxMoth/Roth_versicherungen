@@ -18,23 +18,43 @@ const services = [
     'Schmuck- und Kunstversicherung',
     'Unfallversicherung',
     'Vermögens­schadenversicherung',
-    'Internationale Spezial­deckungen',
+    'Versicherungen für Auslandsimmobilien und dort befindliche Werte',
+    'Versicherungen für Flugzeuge, Yachten und historische Fahrzeuge',
 ]
 
 const Privatkunden: React.FC = () => (
     <>
         <PageHero
-            eyebrow="Privatkunden"
+            eyebrow="Roth Versicherungen › Privatkunden"
             title="Wir halten Sie auf der richtigen Spur."
-            subtitle="Jeder Mensch ist einzigartig und hat eigene Wünsche und Träume für sein Leben. Wir prüfen Ihren individuellen Bedarf und sprechen neutrale, unabhängige Empfehlungen aus."
             bgImage={IMAGES.privatkunden}
         />
 
+        <Section eyebrow="Beratungsansatz" title="Jeder Mensch ist einzigartig.">
+            <div className="space-y-6 text-stone-700 text-lg leading-relaxed max-w-4xl">
+                <p>
+                    Jeder Mensch ist einzigartig und hat eigene Wünsche und
+                    Träume für sein Leben. Damit Sie für Ihre Ziele optimal
+                    vorsorgen können, nehmen wir uns Zeit für Ihre persönliche
+                    Lebenssituation.
+                </p>
+                <p>
+                    Auf dieser Basis ermitteln wir gemeinsam mit Ihnen
+                    mögliche Risiken für Ihre Lebensplanung. Anschließend
+                    stimmen wir den Versicherungsschutz neutral und
+                    unabhängig darauf ab. Wir sagen Ihnen offen, welche
+                    Risiken Sie selbst tragen können und welche Sie besser
+                    absichern sollten.
+                </p>
+            </div>
+        </Section>
+
         <Section
-            eyebrow="Unser Angebot"
+            eyebrow="Unser Versicherungsangebot"
             title="Leistungen für Privatkunden."
+            bg="page"
         >
-            <div className="grid md:grid-cols-3 gap-3">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {services.map(s => (
                     <div
                         key={s}
@@ -53,7 +73,6 @@ const Privatkunden: React.FC = () => (
         <Section
             eyebrow="Spezialthema"
             title="Tierkrankenversicherung."
-            bg="page"
         >
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <img

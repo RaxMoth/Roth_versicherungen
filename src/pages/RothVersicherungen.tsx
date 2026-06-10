@@ -9,8 +9,7 @@ const RothVersicherungen: React.FC = () => (
     <>
         <PageHero
             eyebrow="Roth Versicherungen"
-            title="Ihr Experte für Versicherungen seit 1907."
-            subtitle="Mehr als hundert Jahre Erfahrung sind ein guter Anfang."
+            title="Mehr als hundert Jahre Erfahrung sind ein guter Anfang."
             bgImage={IMAGES.versicherungen}
         />
 
@@ -18,36 +17,66 @@ const RothVersicherungen: React.FC = () => (
             eyebrow="Tradition"
             title="Über ein Jahrhundert Versicherungs­kompetenz."
         >
-            <div className="space-y-6 text-stone-700 text-lg leading-relaxed max-w-3xl">
+            <div className="space-y-6 text-stone-700 text-lg leading-relaxed max-w-4xl">
                 <p>
                     Die Geschichte der Roth Versicherungen reicht bis zum
-                    Anfang des letzten Jahrhunderts zurück. Damals, im Jahre
-                    1907, gründete Hch. Werner XII in Langen ein Unternehmen
-                    zur Vermittlung von Versicherungs­leistungen. Im Jahr 1932
-                    trat sein Schwiegersohn Fritz Roth sen. in das Unternehmen
-                    ein. Seit 1949 firmiert das Unternehmen unter Roth
-                    Versicherungen.
+                    Anfang des letzten Jahrhunderts zurück.
+                </p>
+                <p>
+                    Damals, im Jahre 1907, gründete Hch. Werner XII in Langen
+                    ein Unternehmen zur Vermittlung von
+                    Versicherungsleistungen.
+                </p>
+                <p>
+                    Im Jahr 1932 trat sein Schwiegersohn Fritz Roth sen. in
+                    das Unternehmen ein. Seit 1949 firmiert das Unternehmen
+                    unter Roth Versicherungen. Es wurde stets von einem
+                    Mitglied der Familie Roth geführt. Heute leitet{' '}
+                    <strong className="text-stone-900">Carlo Roth</strong> das
+                    Unternehmen in vierter Generation.
                 </p>
                 <p>
                     Für die Kundinnen und Kunden des Unternehmens bedeutet
                     dies Sicherheit durch Kontinuität und Tradition sowie
                     kompetente Betreuung mit dem Wissen und der Erfahrung aus
-                    über einem Jahrhundert Präsenz in der Versicherungs­branche.
+                    über einem Jahrhundert Präsenz in der
+                    Versicherungsbranche.
                 </p>
                 <p>
-                    Unser Anspruch ist eine langfristige und ergebnisorientierte
-                    Beratung, damit Sie mit Roth Versicherungen auf jede
-                    Situation optimal vorbereitet sind.
+                    Unser Anspruch ist eine langfristige und
+                    ergebnisorientierte Beratung, damit Sie mit Roth
+                    Versicherungen auf jede Situation optimal vorbereitet
+                    sind. Wir freuen uns deshalb sehr, dass viele unserer
+                    Kundinnen und Kunden bereits seit Generationen mit Roth
+                    Versicherungen zusammenarbeiten. Unsere Dienstleistungen
+                    umfassen das gesamte Spektrum des versicherungsrelevanten
+                    Risiko-, Vertrags- und Schadenmanagements.
                 </p>
             </div>
         </Section>
 
-        <Section eyebrow="Leistungen" title="Unsere Dienstleistungen." bg="page">
-            <p className="text-stone-700 text-lg leading-relaxed mb-10 max-w-3xl">
-                Unsere Dienstleistungen umfassen das gesamte Spektrum des
-                versicherungsrelevanten Risiko-, Vertrags- und
-                Schadenmanagements.
-            </p>
+        <Section
+            eyebrow="Historisches Archiv"
+            title="Roth Versicherungen früher."
+            bg="page"
+        >
+            <div className="grid md:grid-cols-2 gap-8">
+                <img
+                    src={IMAGES.versicherungen}
+                    alt="Historisches Foto des Roth-Büros"
+                    className="w-full h-[360px] object-cover rounded-md shadow-card"
+                    loading="lazy"
+                />
+                <img
+                    src={IMAGES.versicherungenContent}
+                    alt="Historische Roth Versicherungen Renault 4 Firmenfahrzeuge"
+                    className="w-full h-[360px] object-cover rounded-md shadow-card"
+                    loading="lazy"
+                />
+            </div>
+        </Section>
+
+        <Section eyebrow="Leistungen" title="Unsere Dienstleistungen.">
             <div className="grid md:grid-cols-2 gap-6">
                 <Link
                     to="/roth-versicherungen/firmenkunden"
@@ -57,8 +86,11 @@ const RothVersicherungen: React.FC = () => (
                         Firmenkunden
                     </h3>
                     <p className="text-stone-700 leading-relaxed">
-                        Rückenstärkung für Ihr Unternehmen – von der
-                        Risikoanalyse bis zur Cyber-Police.
+                        Als Firmenkunde profitieren Sie von den Vorteilen
+                        unserer operativen und strategischen Risikoerfassung.
+                        Darüber hinaus bieten wir Ihnen spezielle
+                        Branchenlösungen sowie eine breite Produkt- und
+                        Leistungsvielfalt.
                     </p>
                     <p className="mt-6 text-brand-red font-semibold text-sm group-hover:translate-x-1 transition-transform">
                         Mehr erfahren →
@@ -72,14 +104,22 @@ const RothVersicherungen: React.FC = () => (
                         Privatkunden
                     </h3>
                     <p className="text-stone-700 leading-relaxed">
-                        Wir halten Sie auf der richtigen Spur – individuelle
-                        Absicherung für jede Lebenslage.
+                        Für Privatkunden und Freiberufler entwickeln wir
+                        individuelle Konzepte zur Risikovorsorge. Wir beraten
+                        unabhängig und neutral. Dabei wägen wir stets ab, ob
+                        Risiken von unseren Kunden selbst getragen werden
+                        können oder auf einen Versicherer übertragen werden
+                        sollten.
                     </p>
                     <p className="mt-6 text-brand-red font-semibold text-sm group-hover:translate-x-1 transition-transform">
                         Mehr erfahren →
                     </p>
                 </Link>
             </div>
+            <p className="mt-10 text-stone-700 text-lg leading-relaxed italic max-w-3xl">
+                Überzeugen Sie sich selbst und vereinbaren Sie einen
+                Beratungstermin mit uns.
+            </p>
         </Section>
 
         <CallToAction />

@@ -7,46 +7,78 @@ import { IMAGES } from '../utils/company'
 
 const categories = [
     {
-        title: 'Risikomanagement',
+        title: 'Risiko-Management',
         items: [
-            'Identifikation und Bewertung firmen­spezifischer Risiken und Lösungen',
-            'Überprüfung bestehender Versicherungs­policen',
+            'Suche und Bewertung individueller Unternehmensrisiken und deren Lösung',
+            'Überprüfung bestehender Policen',
         ],
     },
     {
         title: 'Vertragsmanagement',
         items: [
-            'Gegenüberstellung von bestehendem und benötigtem Versicherungsschutz',
-            'Optimierungsvorschläge oder Umstellung von Policen',
+            'Soll-Ist-Vergleich bestehender Versicherungspolicen',
+            'Optimierungsempfehlungen oder Neuordnung bestehender Policen',
             'Erstellung von Angeboten',
             'Platzierung von Deckungskonzepten',
-            'Regelmäßige Anpassung an gesetzliche Änderungen und Marktentwicklungen',
+            'Regelmäßige Anpassung der Policen nach gesetzlichen Änderungen, aufgrund aktueller Marktentwicklungen oder bei Einführung neuer Produkte',
         ],
     },
     {
         title: 'Schadenmanagement',
         items: [
-            'Dokumentation aller erstattungs­fähigen Kosten',
-            'Unterstützung durch Sachverständige bei Bedarf',
-            'Vertretung gegenüber dem Versicherer',
-            'Schadenquoten­reduzierung durch Regressprüfung',
-            'Prüfung der Schadenregulierung',
+            'Erfassung aller schadensersatzpflichtigen Kosten',
+            'Bei Bedarf Unterstützung durch geeignete Sachverständige',
+            'Interessenvertretung gegenüber dem Versicherer',
+            'Entlastung der Schadensquote durch Prüfung der Regressfähigkeit',
+            'Prüfung der Schadenabrechnung',
         ],
     },
+]
+
+const specialProducts = [
+    'Allgefahren-Policen',
+    'Mitarbeiterprogramme',
+    'Betriebliche Altersvorsorge',
 ]
 
 const Firmenkunden: React.FC = () => (
     <>
         <PageHero
-            eyebrow="Firmenkunden"
+            eyebrow="Roth Versicherungen › Firmenkunden"
             title="Rückenstärkung für Ihr Unternehmen."
-            subtitle="Als Bindeglied zwischen Ihrem Unternehmen und unseren Versicherungs­partnern bieten wir neutrale, ergebnisorientierte Beratung zur Identifikation und Absicherung Ihrer individuellen Unternehmensrisiken."
+            subtitle="Außergewöhnliche Risiken erfordern außergewöhnliche Lösungen."
             bgImage={IMAGES.firmenkunden}
         />
+
+        <Section eyebrow="Beratungsansatz" title="Die Schnittstelle zwischen Ihnen und Ihren Versicherern.">
+            <div className="space-y-6 text-stone-700 text-lg leading-relaxed max-w-4xl">
+                <p>
+                    Außergewöhnliche Risiken erfordern außergewöhnliche
+                    Lösungen. Wir sind die Schnittstelle zwischen Ihnen und
+                    unseren Versicherungspartnern. Unsere neutrale und
+                    ergebnisorientierte Beratung zeigt Ihnen die Möglichkeiten
+                    und Wege zur Absicherung der individuellen Risiken Ihres
+                    Unternehmens auf. So können Sie fundiert entscheiden,
+                    welche unserer Leistungen Sie in Anspruch nehmen möchten.
+                </p>
+                <p>
+                    Gemeinsam mit Ihnen entscheiden wir über Art und Umfang
+                    unserer Zusammenarbeit:{' '}
+                    <strong className="text-stone-900">
+                        einmalig oder fortlaufend
+                    </strong>
+                    . Ebenso stimmen wir mit Ihnen die Art der Vergütung ab:
+                    erfolgsabhängig, aufwandsbezogen oder pauschal auf
+                    Honorar- oder Courtagebasis. Selbstverständlich ist auch
+                    eine Kombination der Systeme möglich.
+                </p>
+            </div>
+        </Section>
 
         <Section
             eyebrow="Leistungsspektrum"
             title="Drei Säulen unseres Mandats."
+            bg="page"
         >
             <div className="grid md:grid-cols-3 gap-6">
                 {categories.map(cat => (
@@ -75,29 +107,20 @@ const Firmenkunden: React.FC = () => (
             </div>
         </Section>
 
-        <Section eyebrow="Spezialprodukte" title="Mehr als Standard." bg="page">
+        <Section eyebrow="Spezialprodukte" title="Eine Auswahl an Spezialprodukten.">
             <div className="grid md:grid-cols-3 gap-4">
-                {[
-                    'All-Risk-Policen',
-                    'Mitarbeiter­programme',
-                    'Betriebliche Altersvorsorge',
-                ].map(item => (
+                {specialProducts.map(item => (
                     <div
                         key={item}
-                        className="bg-white p-6 rounded-md shadow-card text-stone-900 font-medium text-center"
+                        className="bg-white p-6 rounded-md shadow-card text-stone-900 font-medium text-center border-l-2 border-brand-red"
                     >
                         {item}
                     </div>
                 ))}
             </div>
-            <p className="mt-10 text-stone-700 text-lg leading-relaxed max-w-3xl">
-                Ob einmaliges Mandat oder fortlaufende Betreuung – wir sind
-                flexibel in Bezug auf Häufigkeit und Vergütung
-                (erfolgsabhängig, kostenbasiert, Pauschalen oder Mischformen).
-            </p>
         </Section>
 
-        <Section eyebrow="Cyber-Risk" title="Schutz vor digitalen Bedrohungen.">
+        <Section eyebrow="Cyber-Risk" title="Schutz vor digitalen Bedrohungen." bg="page">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <img
                     src={IMAGES.cyber}

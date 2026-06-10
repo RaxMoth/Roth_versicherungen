@@ -29,9 +29,9 @@ const services = [
 ]
 
 const trust = [
-    { value: 'seit 1907', label: 'in Langen für Sie da' },
-    { value: '4 Generationen', label: 'Familientradition' },
-    { value: '5 Berater', label: 'persönlich erreichbar' },
+    { value: 'seit 1907', label: 'Roth Versicherungen' },
+    { value: 'seit 1970', label: 'Roth Finanz' },
+    { value: '4. Generation', label: 'Familienbetrieb' },
     { value: 'unabhängig', label: 'neutral & ungebunden' },
 ]
 
@@ -39,9 +39,9 @@ const Home: React.FC = () => (
     <>
         <PageHero
             eyebrow="Roth Versicherungen & Roth Finanz"
-            title="Ihr Versicherungs­makler aus Langen."
-            subtitle="Persönliche, neutrale Beratung – seit 1907. Wir nehmen uns Zeit für Ihre Fragen und finden mit Ihnen die Lösung, die wirklich passt."
-            bgImage={IMAGES.home}
+            title="Ihr Versicherungs- und Finanzmakler in Langen."
+            subtitle="Die Zahl der Versicherer und das Angebot an Versicherungsleistungen sind so vielfältig, dass es nicht einfach ist, sich zurechtzufinden und abzuschätzen, ob alle Risiken ausreichend abgedeckt sind."
+            bgImage={IMAGES.versicherungen}
             height="tall"
         />
 
@@ -70,40 +70,33 @@ const Home: React.FC = () => (
 
         <Section
             eyebrow="Über uns"
-            title="Eine Maklerfamilie aus Langen – seit 1907."
+            title="Wir sind Ihr roter Faden in diesem Labyrinth."
         >
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div className="space-y-5 text-stone-700 text-[17px] leading-relaxed">
-                    <p>
-                        Schon 1907 gründete Hch. Werner XII in Langen ein
-                        Unternehmen zur Vermittlung von Versicherungen – heute
-                        sind wir in vierter Generation für unsere Kundinnen und
-                        Kunden da.
-                    </p>
-                    <p>
-                        Wir kennen die Menschen, mit denen wir arbeiten, beim
-                        Namen. Statt anonymer Hotlines bekommen Sie bei uns
-                        immer dieselbe Ansprechperson – jemand, der zuhört,
-                        mitdenkt und sich Zeit nimmt.
-                    </p>
-                    <p>
-                        Als Makler sind wir keinem Versicherer verpflichtet,
-                        sondern ausschließlich Ihnen. Das macht unsere
-                        Empfehlungen ehrlich und Ihren Schutz so passgenau wie
-                        möglich.
-                    </p>
-                    <p className="text-stone-900 border-l-2 border-brand-red pl-5 italic">
-                        „Der rote Faden der Ariadne ist sprichwörtlich ein
-                        Hilfsmittel, um sich in schwierigen Situationen
-                        zurechtzufinden – genau das möchten wir für Sie sein."
-                    </p>
-                </div>
-                <img
-                    src={IMAGES.history}
-                    alt="Eingang unseres Maklerbüros in Langen"
-                    className="w-full h-[420px] object-cover rounded-md shadow-card"
-                    loading="lazy"
-                />
+            <div className="space-y-6 text-stone-700 text-[17px] leading-relaxed max-w-4xl">
+                <p>
+                    Wir sind Ihr roter Faden in diesem Labyrinth. Der rote
+                    Faden der Ariadne ist sprichwörtlich ein Hilfsmittel, um
+                    sich in schwierigen Situationen zurechtzufinden. Und die
+                    entstehen immer dann, wenn es darum geht, den passenden
+                    und umfassenden Versicherungsschutz zu finden oder einen
+                    Schaden zu regulieren.
+                </p>
+                <p>
+                    Als Experten für Versicherungen und Finanzdienstleistungen
+                    engagieren wir uns{' '}
+                    <strong className="text-stone-900">
+                        seit 1907 bzw. 1970
+                    </strong>{' '}
+                    für Unternehmer, Unternehmen und Privatkunden. Unser
+                    Anspruch ist eine langfristige und ergebnisorientierte
+                    Beratung, damit Sie auf jede Situation optimal vorbereitet
+                    sind.
+                </p>
+                <p>
+                    Unsere Dienstleistungen umfassen das gesamte Spektrum des
+                    versicherungsrelevanten Risiko-, Vertrags- und
+                    Schadenmanagements.
+                </p>
             </div>
         </Section>
 
@@ -133,23 +126,15 @@ const Home: React.FC = () => (
             </div>
         </Section>
 
-        <Section
-            eyebrow="Beratung"
-            title="Wir kommen zu Ihnen – auch nach Hause."
-        >
+        <Section eyebrow="Vor Ort" title="Hier finden Sie uns.">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <img
-                    src={IMAGES.consulting}
-                    alt="Beratungsgespräch"
-                    className="w-full h-[380px] object-cover rounded-md shadow-card"
+                    src={IMAGES.home}
+                    alt="SO NAH. SO GUT. SO LANGEN. Initiative"
+                    className="w-64 h-auto"
                     loading="lazy"
                 />
                 <div className="space-y-4 text-stone-700 text-[17px] leading-relaxed">
-                    <p>
-                        Beratung im Büro in der Bahnstraße, direkt bei Ihnen
-                        zuhause, im Unternehmen oder online per Video – Sie
-                        entscheiden, wie und wo wir uns sehen.
-                    </p>
                     <p>
                         Wir sind für unsere Kundinnen und Kunden vor Ort in
                         Langen und unterstützen die Initiative{' '}
@@ -157,20 +142,9 @@ const Home: React.FC = () => (
                             SO NAH. SO GUT. SO LANGEN.
                         </strong>
                     </p>
-                    <div className="flex flex-wrap gap-3 pt-3">
-                        <Link
-                            to="/online-beratung"
-                            className="bg-stone-900 hover:bg-stone-800 transition text-white font-semibold px-6 py-3 rounded-sm text-[15px]"
-                        >
-                            Online-Termin anfragen
-                        </Link>
-                        <Link
-                            to="/team"
-                            className="border border-stone-900 hover:bg-stone-900 hover:text-white transition text-stone-900 font-semibold px-6 py-3 rounded-sm text-[15px]"
-                        >
-                            Team kennenlernen
-                        </Link>
-                    </div>
+                    <p>
+                        Lesen Sie auch, wie uns unsere Kunden bewerten.
+                    </p>
                 </div>
             </div>
         </Section>

@@ -2,17 +2,12 @@ import React from 'react'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import Member from '../components/Member'
-import Carlo from '../assets/Carlo_Roth.jpeg'
-import Petra from '../assets/Petra.png'
-import sabrina from '../assets/sabrina.jpeg'
-import williams from '../assets/williams.jpeg'
-import dogs from '../assets/Dogs.jpeg'
-import { TEAM, IMAGES } from '../utils/company'
+import { TEAM, IMAGES, TEAM_PHOTOS } from '../utils/company'
 
 const Team: React.FC = () => (
     <>
         <PageHero
-            eyebrow="Unser Team"
+            eyebrow="Unser Beratungsteam"
             title="Persönlich. Erfahren. Generationsübergreifend."
             subtitle="Lernen Sie die Menschen hinter Roth Versicherungen und Roth Finanz kennen."
             bgImage={IMAGES.team}
@@ -23,32 +18,32 @@ const Team: React.FC = () => (
                 <Member
                     name={TEAM.CARLO}
                     title={TEAM.CARLO_TITLE}
-                    imageSrc={Carlo}
+                    imageSrc={TEAM_PHOTOS.carlo}
                     focusAreas={[...TEAM.CARLO_FOCUS]}
                 />
                 <Member
                     name={TEAM.PETRA}
                     title={TEAM.PETRA_TITLE}
-                    imageSrc={Petra}
+                    imageSrc={TEAM_PHOTOS.petra}
                     focusAreas={[...TEAM.PETRA_FOCUS]}
                 />
                 <Member
                     name={TEAM.WILLIAM}
                     title={TEAM.WILLIAM_TITLE}
-                    imageSrc={williams}
+                    imageSrc={TEAM_PHOTOS.williams}
                     qualifications={[...TEAM.WILLIAM_QUALIFIKATIONS]}
                     focusAreas={[...TEAM.WILLIAM_FOCUS]}
                 />
                 <Member
                     name={TEAM.SABRINA}
                     title={TEAM.SABRINA_TITLE}
-                    imageSrc={sabrina}
+                    imageSrc={TEAM_PHOTOS.sabrina}
                     focusAreas={[...TEAM.SABRINA_FOCUS]}
                 />
                 <Member
                     name={TEAM.DOGS}
                     title={TEAM.DOGS_TITLE}
-                    imageSrc={dogs}
+                    imageSrc={TEAM_PHOTOS.dogs}
                     focusAreas={[...TEAM.DOGS_FOCUS]}
                 />
             </div>

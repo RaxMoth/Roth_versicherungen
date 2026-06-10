@@ -7,26 +7,32 @@ import { COMPANY, IMAGES } from '../utils/company'
 interface FormState {
     name: string
     company: string
+    address: string
     email: string
     phone: string
     contactMethod: 'email' | 'phone'
     message: string
+    appointment: string
+    consent: boolean
 }
 
 const initial: FormState = {
     name: '',
     company: '',
+    address: '',
     email: '',
     phone: '',
     contactMethod: 'email',
     message: '',
+    appointment: '',
+    consent: false,
 }
 
 const Kontakt: React.FC = () => {
     const [form, setForm] = useState<FormState>(initial)
     const [submitted, setSubmitted] = useState(false)
 
-    const update = (k: keyof FormState, v: string) =>
+    const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
         setForm(prev => ({ ...prev, [k]: v }))
 
     const onSubmit = (e: React.FormEvent) => {
@@ -38,12 +44,24 @@ const Kontakt: React.FC = () => {
         <>
             <PageHero
                 eyebrow="Kontakt & Anfahrt"
-                title="So erreichen Sie uns."
-                subtitle="Persönlich im Büro in Langen, telefonisch, per E-Mail oder online – wir freuen uns auf Ihre Nachricht."
+                title="Sie erreichen uns auf vielen Wegen."
                 bgImage={IMAGES.kontakt}
             />
 
-            <Section eyebrow="Kontaktdaten" title="Unsere Daten auf einen Blick.">
+            <Section
+                eyebrow="Beratungsservice"
+                title="Profitieren Sie ab der ersten Kontaktaufnahme."
+            >
+                <p className="text-stone-700 leading-relaxed text-lg max-w-4xl mb-10">
+                    Profitieren Sie ab der ersten Kontaktaufnahme von unserem
+                    professionellen Beratungsservice. Wir nehmen uns Zeit für
+                    Sie und freuen uns auf Ihre ganz speziellen Aufgaben.
+                    Bitte nennen Sie uns stichwortartig Ihre Beratungswünsche
+                    oder Fragen in dem vorbereiteten Kontaktformular. Hier
+                    können Sie auch mögliche Terminwünsche vermerken. Wir
+                    melden uns umgehend bei Ihnen.
+                </p>
+
                 <div className="grid md:grid-cols-2 gap-10">
                     <div className="space-y-5 text-stone-700">
                         <p className="font-serif text-xl text-stone-900">
@@ -58,7 +76,7 @@ const Kontakt: React.FC = () => {
                         </p>
                         <div className="space-y-1">
                             <p>
-                                Telefon:{' '}
+                                Fon:{' '}
                                 <a
                                     href={COMPANY.phoneHref}
                                     className="text-brand-red font-semibold"
@@ -87,11 +105,13 @@ const Kontakt: React.FC = () => {
                         </div>
                         <div className="pt-4 border-t border-stone-200">
                             <p className="uppercase tracking-wider text-xs text-brand-red font-semibold mb-2">
-                                Öffnungszeiten
+                                Unsere Geschäftszeiten
                             </p>
-                            <p>{COMPANY.hours}</p>
+                            <p>Montag – Freitag: 9:00 – 17:00 Uhr</p>
                             <p className="text-sm text-stone-500 mt-1">
-                                {COMPANY.hoursExtra}
+                                Besprechungstermine außerhalb der
+                                Geschäftszeiten sind jederzeit nach Absprache
+                                möglich.
                             </p>
                         </div>
                     </div>
@@ -106,11 +126,23 @@ const Kontakt: React.FC = () => {
                 </div>
             </Section>
 
-            <Section eyebrow="Nachricht" title="Schreiben Sie uns." bg="page">
+            <Section
+                eyebrow="Kontaktformular"
+                title="Fragen, Terminvereinbarung oder Schadensmeldung?"
+                bg="page"
+            >
+                <p className="text-stone-700 leading-relaxed text-lg mb-8 max-w-3xl">
+                    Sie haben Fragen zu unseren Versicherungsdienstleistungen
+                    oder möchten einen Termin für einen Policen-Check
+                    vereinbaren? Sie möchten einen Schaden melden? Nehmen Sie
+                    Kontakt zu uns auf!
+                </p>
+
                 {submitted ? (
                     <div className="bg-white p-10 rounded-md shadow-card border-t-2 border-brand-red max-w-2xl">
                         <p className="font-serif text-2xl text-stone-900">
-                            Vielen Dank für Ihre Nachricht!
+                            Ihre Formularnachricht wurde erfolgreich
+                            versendet.
                         </p>
                         <p className="mt-3 text-stone-700">
                             Wir melden uns in Kürze bei Ihnen.
@@ -121,7 +153,7 @@ const Kontakt: React.FC = () => {
                         onSubmit={onSubmit}
                         className="grid md:grid-cols-2 gap-5 bg-white p-8 rounded-md shadow-card border-t-2 border-brand-red"
                     >
-                        <label className="flex flex-col text-sm text-stone-700 uppercase tracking-wider font-semibold">
+                        <label className="flex flex-col text-sm text-stone-700 font-semibold">
                             Name *
                             <input
                                 required
@@ -131,7 +163,7 @@ const Kontakt: React.FC = () => {
                                 className="mt-2 border border-stone-300 px-4 py-3 text-base font-normal text-stone-900 focus:border-brand-red focus:outline-none rounded-sm"
                             />
                         </label>
-                        <label className="flex flex-col text-sm text-stone-700 uppercase tracking-wider font-semibold">
+                        <label className="flex flex-col text-sm text-stone-700 font-semibold">
                             Firma
                             <input
                                 type="text"
@@ -142,8 +174,19 @@ const Kontakt: React.FC = () => {
                                 className="mt-2 border border-stone-300 px-4 py-3 text-base font-normal text-stone-900 focus:border-brand-red focus:outline-none rounded-sm"
                             />
                         </label>
-                        <label className="flex flex-col text-sm text-stone-700 uppercase tracking-wider font-semibold">
-                            E-Mail *
+                        <label className="flex flex-col text-sm text-stone-700 font-semibold md:col-span-2">
+                            Adresse
+                            <input
+                                type="text"
+                                value={form.address}
+                                onChange={e =>
+                                    update('address', e.target.value)
+                                }
+                                className="mt-2 border border-stone-300 px-4 py-3 text-base font-normal text-stone-900 focus:border-brand-red focus:outline-none rounded-sm"
+                            />
+                        </label>
+                        <label className="flex flex-col text-sm text-stone-700 font-semibold">
+                            E-Mail-Adresse *
                             <input
                                 required
                                 type="email"
@@ -152,20 +195,18 @@ const Kontakt: React.FC = () => {
                                 className="mt-2 border border-stone-300 px-4 py-3 text-base font-normal text-stone-900 focus:border-brand-red focus:outline-none rounded-sm"
                             />
                         </label>
-                        <label className="flex flex-col text-sm text-stone-700 uppercase tracking-wider font-semibold">
-                            Telefon
+                        <label className="flex flex-col text-sm text-stone-700 font-semibold">
+                            Telefon *
                             <input
+                                required
                                 type="tel"
                                 value={form.phone}
                                 onChange={e => update('phone', e.target.value)}
                                 className="mt-2 border border-stone-300 px-4 py-3 text-base font-normal text-stone-900 focus:border-brand-red focus:outline-none rounded-sm"
                             />
                         </label>
-                        <div className="md:col-span-2 flex items-center gap-8 text-sm text-stone-700">
-                            <span className="uppercase tracking-wider font-semibold">
-                                Kontaktweg:
-                            </span>
-                            <label className="flex items-center gap-2 normal-case font-normal">
+                        <div className="md:col-span-2 space-y-2 text-sm text-stone-700">
+                            <label className="flex items-center gap-2 font-normal">
                                 <input
                                     type="radio"
                                     name="contactMethod"
@@ -174,9 +215,9 @@ const Kontakt: React.FC = () => {
                                         update('contactMethod', 'email')
                                     }
                                 />
-                                E-Mail
+                                Bitte kontaktieren Sie mich per E-Mail
                             </label>
-                            <label className="flex items-center gap-2 normal-case font-normal">
+                            <label className="flex items-center gap-2 font-normal">
                                 <input
                                     type="radio"
                                     name="contactMethod"
@@ -185,10 +226,10 @@ const Kontakt: React.FC = () => {
                                         update('contactMethod', 'phone')
                                     }
                                 />
-                                Telefon
+                                Bitte kontaktieren Sie mich telefonisch
                             </label>
                         </div>
-                        <label className="flex flex-col text-sm text-stone-700 uppercase tracking-wider font-semibold md:col-span-2">
+                        <label className="flex flex-col text-sm text-stone-700 font-semibold md:col-span-2">
                             Nachricht *
                             <textarea
                                 required
@@ -200,6 +241,41 @@ const Kontakt: React.FC = () => {
                                 className="mt-2 border border-stone-300 px-4 py-3 text-base font-normal text-stone-900 focus:border-brand-red focus:outline-none rounded-sm"
                             />
                         </label>
+                        <label className="flex flex-col text-sm text-stone-700 font-semibold md:col-span-2">
+                            Terminwunsch
+                            <input
+                                type="text"
+                                placeholder="z. B. nächste Woche vormittags"
+                                value={form.appointment}
+                                onChange={e =>
+                                    update('appointment', e.target.value)
+                                }
+                                className="mt-2 border border-stone-300 px-4 py-3 text-base font-normal text-stone-900 focus:border-brand-red focus:outline-none rounded-sm"
+                            />
+                        </label>
+                        <label className="flex items-start gap-3 text-sm text-stone-700 md:col-span-2 font-normal leading-relaxed">
+                            <input
+                                required
+                                type="checkbox"
+                                className="mt-1"
+                                checked={form.consent}
+                                onChange={e =>
+                                    update('consent', e.target.checked)
+                                }
+                            />
+                            <span>
+                                Hiermit erkläre ich mich einverstanden, dass
+                                meine in das Kontaktformular eingegebenen
+                                Daten elektronisch gespeichert und zum Zweck
+                                der Kontaktaufnahme verarbeitet und genutzt
+                                werden. Mir ist bekannt, dass ich meine
+                                Einwilligung jederzeit widerrufen kann.
+                            </span>
+                        </label>
+                        <p className="md:col-span-2 text-xs text-stone-500">
+                            Hinweis: Felder, die mit * bezeichnet sind, sind
+                            Pflichtfelder.
+                        </p>
                         <div className="md:col-span-2">
                             <button
                                 type="submit"

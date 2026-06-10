@@ -4,51 +4,27 @@ import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import { IMAGES } from '../utils/company'
 
-const steps = [
-    {
-        n: '01',
-        t: 'Termin anfragen',
-        d: 'Sie vereinbaren mit uns telefonisch oder per E-Mail einen Wunschtermin.',
-    },
-    {
-        n: '02',
-        t: 'Meeting-Link erhalten',
-        d: 'Wir senden Ihnen eine Meeting-ID und einen Link für Ihren persönlichen Beratungstermin.',
-    },
-    {
-        n: '03',
-        t: 'Sicher beraten',
-        d: 'Zur vereinbarten Zeit treffen wir uns sicher und bequem im Online-Meeting – einfach vom Schreibtisch oder von zuhause aus.',
-    },
-]
-
 const OnlineBeratung: React.FC = () => (
     <>
         <PageHero
             eyebrow="Online Beratung"
             title="Wir beraten Sie dort, wo Sie sind."
-            subtitle="Im Büro, vor Ort oder online – Sie entscheiden, wie und wo wir uns sehen."
             bgImage={IMAGES.online}
         />
 
-        <Section eyebrow="Ablauf" title="So funktioniert die Online-Beratung.">
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl">
-                {steps.map(step => (
-                    <div
-                        key={step.n}
-                        className="bg-white p-8 rounded-md shadow-card border-t-2 border-brand-red"
-                    >
-                        <p className="font-serif text-5xl text-brand-red mb-3">
-                            {step.n}
-                        </p>
-                        <h3 className="font-serif text-xl text-stone-900 mb-3">
-                            {step.t}
-                        </h3>
-                        <p className="text-stone-700 leading-relaxed text-sm">
-                            {step.d}
-                        </p>
-                    </div>
-                ))}
+        <Section eyebrow="Flexibel" title="Sie entscheiden, wann und wo.">
+            <div className="space-y-6 text-stone-700 text-lg leading-relaxed max-w-4xl">
+                <p>
+                    Wir sind für Sie da und beraten Sie dort, wo Sie uns
+                    brauchen. Bei uns im Büro, aber auch gerne bei Ihnen vor
+                    Ort oder einfach und unkompliziert online.{' '}
+                    <strong className="text-stone-900">Sie entscheiden.</strong>
+                </p>
+                <p>
+                    Einfach auf den Link klicken und Ihren Wunschtermin
+                    eingeben oder wenn Sie bereits eine Meeting-ID erhalten
+                    haben, diese eingeben.
+                </p>
             </div>
         </Section>
 
@@ -61,7 +37,7 @@ const OnlineBeratung: React.FC = () => (
                 to="/kontakt-anfahrt"
                 className="inline-block bg-brand-red hover:bg-brand-red-dark transition text-white font-semibold px-8 py-4 rounded-sm"
             >
-                Termin anfragen →
+                Online Beratung anfragen →
             </Link>
         </Section>
     </>
