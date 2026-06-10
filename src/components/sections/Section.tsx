@@ -1,7 +1,7 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 
 interface SectionProps {
-    children: React.ReactNode
+    children: ReactNode
     title?: string
     eyebrow?: string
     className?: string
@@ -14,13 +14,13 @@ const bgMap: Record<string, string> = {
     dark: 'bg-stone-900 text-white',
 }
 
-const Section: React.FC<SectionProps> = ({
+const Section = ({
     children,
     title,
     eyebrow,
     className = '',
     bg = 'white',
-}) => (
+}: SectionProps) => (
     <section className={`py-16 md:py-20 px-6 ${bgMap[bg]} ${className}`}>
         <div className="max-w-6xl mx-auto">
             {(eyebrow || title) && (

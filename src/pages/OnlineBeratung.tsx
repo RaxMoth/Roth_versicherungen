@@ -1,46 +1,49 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import PageHero from '../components/PageHero'
-import Section from '../components/Section'
-import { IMAGES } from '../utils/company'
+import { PageHero, Section } from '@/components'
+import { IMAGES } from '@/utils/company'
+import { ONLINE } from '@/content'
+import { ROUTES } from '@/config/routes'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
-const OnlineBeratung: React.FC = () => (
-    <>
-        <PageHero
-            eyebrow="Online Beratung"
-            title="Wir beraten Sie dort, wo Sie sind."
-            bgImage={IMAGES.online}
-        />
+const OnlineBeratung = () => {
+    usePageMeta(ONLINE.meta)
 
-        <Section eyebrow="Flexibel" title="Sie entscheiden, wann und wo.">
-            <div className="space-y-6 text-stone-700 text-lg leading-relaxed max-w-4xl">
-                <p>
-                    Wir sind für Sie da und beraten Sie dort, wo Sie uns
-                    brauchen. Bei uns im Büro, aber auch gerne bei Ihnen vor
-                    Ort oder einfach und unkompliziert online.{' '}
-                    <strong className="text-stone-900">Sie entscheiden.</strong>
-                </p>
-                <p>
-                    Einfach auf den Link klicken und Ihren Wunschtermin
-                    eingeben oder wenn Sie bereits eine Meeting-ID erhalten
-                    haben, diese eingeben.
-                </p>
-            </div>
-        </Section>
+    return (
+        <>
+            <PageHero
+                eyebrow={ONLINE.hero.eyebrow}
+                title={ONLINE.hero.title}
+                bgImage={IMAGES.online}
+            />
 
-        <Section eyebrow="Jetzt starten" title="Termin vereinbaren." bg="page">
-            <p className="text-stone-700 leading-relaxed text-lg mb-8 max-w-3xl">
-                Geben Sie einen Wunschtermin ein oder nutzen Sie eine bereits
-                von uns erhaltene Meeting-ID.
-            </p>
-            <Link
-                to="/kontakt-anfahrt"
-                className="inline-block bg-brand-red hover:bg-brand-red-dark transition text-white font-semibold px-8 py-4 rounded-sm"
+            <Section
+                eyebrow={ONLINE.intro.eyebrow}
+                title={ONLINE.intro.title}
             >
-                Online Beratung anfragen →
-            </Link>
-        </Section>
-    </>
-)
+                <div className="space-y-6 text-stone-700 text-lg leading-relaxed max-w-4xl">
+                    {ONLINE.intro.paragraphs.map(p => (
+                        <p key={p}>{p}</p>
+                    ))}
+                </div>
+            </Section>
+
+            <Section
+                eyebrow={ONLINE.cta.eyebrow}
+                title={ONLINE.cta.title}
+                bg="page"
+            >
+                <p className="text-stone-700 leading-relaxed text-lg mb-8 max-w-3xl">
+                    {ONLINE.cta.body}
+                </p>
+                <Link
+                    to={ROUTES.KONTAKT}
+                    className="inline-block bg-brand-red hover:bg-brand-red-dark transition text-white font-semibold px-8 py-4 rounded-sm"
+                >
+                    {ONLINE.cta.button}
+                </Link>
+            </Section>
+        </>
+    )
+}
 
 export default OnlineBeratung

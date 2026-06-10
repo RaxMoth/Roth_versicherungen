@@ -1,113 +1,133 @@
-import React from 'react'
+import { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Layout from './components/Layout'
-import Home from './pages/Home'
+import { Layout, ErrorBoundary } from '@/components'
+import { ROUTES } from '@/config/routes'
 
-// Roth Versicherungen section
-import RothVersicherungen from './pages/RothVersicherungen'
-import Firmenkunden from './pages/Firmenkunden'
-import CyberPolice from './pages/CyberPolice'
-import Privatkunden from './pages/Privatkunden'
-import Tierkrankenversicherung from './pages/Tierkrankenversicherung'
-import WichtigeHinweise from './pages/WichtigeHinweise'
-import Jobs from './pages/Jobs'
-import VersImpressum from './pages/versicherungen/Impressum'
-import VersDatenschutz from './pages/versicherungen/Datenschutz'
-import VersErstinformation from './pages/versicherungen/Erstinformation'
+// Code-split each route — lazy ensures pages download on demand.
+const Home = lazy(() => import('@/pages/Home'))
+const RothVersicherungen = lazy(() => import('@/pages/RothVersicherungen'))
+const Firmenkunden = lazy(() => import('@/pages/Firmenkunden'))
+const CyberPolice = lazy(() => import('@/pages/CyberPolice'))
+const Privatkunden = lazy(() => import('@/pages/Privatkunden'))
+const Tier = lazy(() => import('@/pages/Tierkrankenversicherung'))
+const WichtigeHinweise = lazy(() => import('@/pages/WichtigeHinweise'))
+const Jobs = lazy(() => import('@/pages/Jobs'))
+const VersErstinfo = lazy(
+    () => import('@/pages/versicherungen/Erstinformation'),
+)
+const VersDatenschutz = lazy(
+    () => import('@/pages/versicherungen/Datenschutz'),
+)
+const VersImpressum = lazy(() => import('@/pages/versicherungen/Impressum'))
+const RothFinanz = lazy(() => import('@/pages/RothFinanz'))
+const Altersversorgung = lazy(() => import('@/pages/Altersversorgung'))
+const Sterbegeld = lazy(() => import('@/pages/Sterbegeldversicherung'))
+const FinErstinfo = lazy(() => import('@/pages/finanz/Erstinformation'))
+const FinDatenschutz = lazy(() => import('@/pages/finanz/Datenschutz'))
+const FinImpressum = lazy(() => import('@/pages/finanz/Impressum'))
+const Team = lazy(() => import('@/pages/Team'))
+const Kontakt = lazy(() => import('@/pages/Kontakt'))
+const OnlineBeratung = lazy(() => import('@/pages/OnlineBeratung'))
+const ServiceApp = lazy(() => import('@/pages/ServiceApp'))
+const NotFound = lazy(() => import('@/pages/NotFound'))
 
-// Roth Finanz section
-import RothFinanz from './pages/RothFinanz'
-import Altersversorgung from './pages/Altersversorgung'
-import Sterbegeldversicherung from './pages/Sterbegeldversicherung'
-import FinImpressum from './pages/finanz/Impressum'
-import FinDatenschutz from './pages/finanz/Datenschutz'
-import FinErstinformation from './pages/finanz/Erstinformation'
+const PageFallback = () => (
+    <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-brand-red border-t-transparent rounded-full animate-spin" />
+    </div>
+)
 
-// Shared / Allgemein
-import Team from './pages/Team'
-import Kontakt from './pages/Kontakt'
-import OnlineBeratung from './pages/OnlineBeratung'
-import ServiceApp from './pages/ServiceApp'
-import NotFound from './pages/NotFound'
+const App = () => (
+    <ErrorBoundary>
+        <Router>
+            <Layout>
+                <Suspense fallback={<PageFallback />}>
+                    <Routes>
+                        <Route path={ROUTES.HOME} element={<Home />} />
 
-const App: React.FC = () => (
-    <Router>
-        <Layout>
-            <Routes>
-                <Route path="/" element={<Home />} />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.INDEX}
+                            element={<RothVersicherungen />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.FIRMENKUNDEN}
+                            element={<Firmenkunden />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.CYBER}
+                            element={<CyberPolice />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.PRIVATKUNDEN}
+                            element={<Privatkunden />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.TIER}
+                            element={<Tier />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.HINWEISE}
+                            element={<WichtigeHinweise />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.JOBS}
+                            element={<Jobs />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.ERSTINFO}
+                            element={<VersErstinfo />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.DATENSCHUTZ}
+                            element={<VersDatenschutz />}
+                        />
+                        <Route
+                            path={ROUTES.VERSICHERUNGEN.IMPRESSUM}
+                            element={<VersImpressum />}
+                        />
 
-                {/* Roth Versicherungen */}
-                <Route
-                    path="/roth-versicherungen"
-                    element={<RothVersicherungen />}
-                />
-                <Route
-                    path="/roth-versicherungen/firmenkunden"
-                    element={<Firmenkunden />}
-                />
-                <Route
-                    path="/roth-versicherungen/firmenkunden/cyber-police"
-                    element={<CyberPolice />}
-                />
-                <Route
-                    path="/roth-versicherungen/privatkunden"
-                    element={<Privatkunden />}
-                />
-                <Route
-                    path="/roth-versicherungen/privatkunden/tierkrankenversicherung"
-                    element={<Tierkrankenversicherung />}
-                />
-                <Route
-                    path="/roth-versicherungen/wichtige-hinweise"
-                    element={<WichtigeHinweise />}
-                />
-                <Route path="/roth-versicherungen/jobs" element={<Jobs />} />
-                <Route
-                    path="/roth-versicherungen/erstinformation"
-                    element={<VersErstinformation />}
-                />
-                <Route
-                    path="/roth-versicherungen/datenschutz"
-                    element={<VersDatenschutz />}
-                />
-                <Route
-                    path="/roth-versicherungen/impressum"
-                    element={<VersImpressum />}
-                />
+                        <Route
+                            path={ROUTES.FINANZ.INDEX}
+                            element={<RothFinanz />}
+                        />
+                        <Route
+                            path={ROUTES.FINANZ.ALTERSVERSORGUNG}
+                            element={<Altersversorgung />}
+                        />
+                        <Route
+                            path={ROUTES.FINANZ.STERBEGELD}
+                            element={<Sterbegeld />}
+                        />
+                        <Route
+                            path={ROUTES.FINANZ.ERSTINFO}
+                            element={<FinErstinfo />}
+                        />
+                        <Route
+                            path={ROUTES.FINANZ.DATENSCHUTZ}
+                            element={<FinDatenschutz />}
+                        />
+                        <Route
+                            path={ROUTES.FINANZ.IMPRESSUM}
+                            element={<FinImpressum />}
+                        />
 
-                {/* Roth Finanz */}
-                <Route path="/roth-finanz" element={<RothFinanz />} />
-                <Route
-                    path="/roth-finanz/altersversorgung"
-                    element={<Altersversorgung />}
-                />
-                <Route
-                    path="/roth-finanz/sterbegeldversicherung"
-                    element={<Sterbegeldversicherung />}
-                />
-                <Route
-                    path="/roth-finanz/erstinformation"
-                    element={<FinErstinformation />}
-                />
-                <Route
-                    path="/roth-finanz/datenschutz"
-                    element={<FinDatenschutz />}
-                />
-                <Route
-                    path="/roth-finanz/impressum"
-                    element={<FinImpressum />}
-                />
+                        <Route path={ROUTES.TEAM} element={<Team />} />
+                        <Route path={ROUTES.KONTAKT} element={<Kontakt />} />
+                        <Route
+                            path={ROUTES.ONLINE}
+                            element={<OnlineBeratung />}
+                        />
+                        <Route
+                            path={ROUTES.SERVICE_APP}
+                            element={<ServiceApp />}
+                        />
 
-                {/* Shared */}
-                <Route path="/team" element={<Team />} />
-                <Route path="/kontakt-anfahrt" element={<Kontakt />} />
-                <Route path="/online-beratung" element={<OnlineBeratung />} />
-                <Route path="/service-app" element={<ServiceApp />} />
-
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </Layout>
-    </Router>
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </Suspense>
+            </Layout>
+        </Router>
+    </ErrorBoundary>
 )
 
 export default App

@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface PageHeroProps {
     eyebrow?: string
     title: string
@@ -8,13 +6,13 @@ interface PageHeroProps {
     height?: 'tall' | 'standard'
 }
 
-const PageHero: React.FC<PageHeroProps> = ({
+const PageHero = ({
     eyebrow,
     title,
     subtitle,
     bgImage,
     height = 'standard',
-}) => {
+}: PageHeroProps) => {
     const pad = height === 'tall' ? 'py-32 md:py-48' : 'py-24 md:py-36'
 
     return (

@@ -1,168 +1,166 @@
-import React from 'react'
-import PageHero from '../../components/PageHero'
-import Section from '../../components/Section'
-import { COMPANY, FINANZ, DIHK, IMAGES } from '../../utils/company'
+import { PageHero, Section } from '@/components'
+import { COMPANY, IMAGES } from '@/utils/company'
+import {
+    FINANZ_LEGAL,
+    DIHK,
+    IMPRESSUM_STRINGS,
+} from '@/content'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
-const Impressum: React.FC = () => (
-    <>
-        <PageHero
-            eyebrow="Roth Finanz › Impressum"
-            title="Impressum."
-            subtitle={FINANZ.tagline}
-            bgImage={IMAGES.impressum}
-        />
+const Impressum = () => {
+    usePageMeta({
+        title: `Impressum – ${FINANZ_LEGAL.short}`,
+        description: `Impressum der ${FINANZ_LEGAL.name}, ${COMPANY.address}.`,
+    })
+    const f = FINANZ_LEGAL
+    const s = IMPRESSUM_STRINGS
 
-        <Section title="Anbieter">
-            <p className="text-stone-700 leading-relaxed text-lg">
-                <strong className="font-serif text-stone-900 text-xl">
-                    {FINANZ.name}
-                </strong>
-                <br />
-                {COMPANY.street}
-                <br />
-                {COMPANY.city}
-                <br />
-                Tel.: {COMPANY.phone}
-                <br />
-                Fax: {COMPANY.fax}
-                <br />
-                E-Mail:{' '}
-                <a
-                    href={`mailto:${COMPANY.emailFinanz}`}
-                    className="text-brand-red"
-                >
-                    {COMPANY.emailFinanz}
-                </a>
-            </p>
-        </Section>
+    return (
+        <>
+            <PageHero
+                eyebrow="Roth Finanz › Impressum"
+                title="Impressum."
+                subtitle={f.tagline}
+                bgImage={IMAGES.impressum}
+            />
 
-        <Section title="Geschäftsführende Gesellschafter" bg="page">
-            <p className="text-stone-900 text-lg">{FINANZ.management}</p>
-        </Section>
+            <Section title={s.sections.provider}>
+                <p className="text-stone-700 leading-relaxed text-lg">
+                    <strong className="font-serif text-stone-900 text-xl">
+                        {f.name}
+                    </strong>
+                    <br />
+                    {COMPANY.street}
+                    <br />
+                    {COMPANY.city}
+                    <br />
+                    Tel.: {COMPANY.phone}
+                    <br />
+                    Fax: {COMPANY.fax}
+                    <br />
+                    E-Mail:{' '}
+                    <a
+                        href={`mailto:${f.email}`}
+                        className="text-brand-red"
+                    >
+                        {f.email}
+                    </a>
+                </p>
+            </Section>
 
-        <Section title="Registereintrag">
-            <ul className="space-y-3 text-stone-700 text-lg">
-                <li>
-                    <strong className="text-stone-900">Registergericht:</strong>{' '}
-                    {FINANZ.registry}
-                </li>
-                <li>
-                    <strong className="text-stone-900">Art:</strong>{' '}
-                    {FINANZ.type}
-                </li>
-                <li>
-                    <strong className="text-stone-900">
-                        Vermittlerregister-Nr.:
-                    </strong>{' '}
-                    {FINANZ.vermittlerNr}
-                </li>
-                <li>
-                    <strong className="text-stone-900">USt-IdNr.:</strong>{' '}
-                    {FINANZ.ustId}
-                </li>
-            </ul>
-        </Section>
+            <Section title={s.sections.management} bg="page">
+                <p className="text-stone-900 text-lg">{f.management}</p>
+            </Section>
 
-        <Section title="Erlaubnis & Aufsicht" bg="page">
-            <div className="space-y-5 text-stone-700 leading-relaxed text-lg max-w-3xl">
-                <div>
-                    <p>
+            <Section title={s.sections.registry}>
+                <ul className="space-y-3 text-stone-700 text-lg">
+                    <li>
                         <strong className="text-stone-900">
-                            Versicherungsvermittlung:
+                            {s.labels.court}
                         </strong>{' '}
-                        Erlaubnis nach {FINANZ.erlaubnisVersicherung}.
-                    </p>
-                    <p className="text-base">
-                        Aufsichtsbehörde: {FINANZ.aufsichtVersicherung}
-                    </p>
-                </div>
-                <div>
-                    <p>
+                        {f.registry}
+                    </li>
+                    <li>
                         <strong className="text-stone-900">
-                            Immobilien- und Finanzvermittlung:
+                            {s.labels.type}
                         </strong>{' '}
-                        Erlaubnis nach {FINANZ.erlaubnisFinanz}.
-                    </p>
-                    <p className="text-base">
-                        Aufsichtsbehörde: {FINANZ.aufsichtFinanz}
-                    </p>
+                        {f.type}
+                    </li>
+                    <li>
+                        <strong className="text-stone-900">
+                            {s.labels.vermittlerNr}
+                        </strong>{' '}
+                        {f.vermittlerNr}
+                    </li>
+                    <li>
+                        <strong className="text-stone-900">
+                            {s.labels.ustId}
+                        </strong>{' '}
+                        {f.ustId}
+                    </li>
+                </ul>
+            </Section>
+
+            <Section title={s.sections.authorityFinanz} bg="page">
+                <div className="space-y-5 text-stone-700 leading-relaxed text-lg max-w-3xl">
+                    <div>
+                        <p>
+                            <strong className="text-stone-900">
+                                Versicherungsvermittlung:
+                            </strong>{' '}
+                            Erlaubnis nach {f.erlaubnisVersicherung}.
+                        </p>
+                        <p className="text-base">
+                            Aufsichtsbehörde: {f.aufsichtVersicherung}
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <strong className="text-stone-900">
+                                Immobilien- und Finanzvermittlung:
+                            </strong>{' '}
+                            Erlaubnis nach {f.erlaubnisFinanz}.
+                        </p>
+                        <p className="text-base">
+                            Aufsichtsbehörde: {f.aufsichtFinanz}
+                        </p>
+                    </div>
+                    <div className="pt-4 border-t border-stone-200">
+                        <p>
+                            <strong className="text-stone-900">
+                                {DIHK.name}
+                            </strong>
+                            <br />
+                            {DIHK.street}, {DIHK.city}
+                            <br />
+                            Tel.: {DIHK.phone}
+                            <br />
+                            Register:{' '}
+                            <a
+                                href={`https://${DIHK.register}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-brand-red"
+                            >
+                                {DIHK.register}
+                            </a>
+                        </p>
+                    </div>
                 </div>
-                <div className="pt-4 border-t border-stone-200">
-                    <p>
-                        <strong className="text-stone-900">{DIHK.name}</strong>
-                        <br />
-                        {DIHK.street}, {DIHK.city}
-                        <br />
-                        Tel.: {DIHK.phone}
-                        <br />
-                        Register:{' '}
-                        <a
-                            href={`https://${DIHK.register}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-brand-red"
-                        >
-                            {DIHK.register}
-                        </a>
-                    </p>
+            </Section>
+
+            <Section title={s.sections.editor}>
+                <p className="text-stone-700 text-lg">
+                    {f.responsibleEditor} {s.editorSuffix}
+                </p>
+            </Section>
+
+            <Section title={s.sections.odr} bg="page">
+                <p className="text-stone-700 leading-relaxed text-lg max-w-3xl">
+                    {s.odr.replace(
+                        'ec.europa.eu/consumers/odr',
+                        '',
+                    )}
+                    <a
+                        href={s.odrUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-brand-red"
+                    >
+                        ec.europa.eu/consumers/odr
+                    </a>
+                </p>
+            </Section>
+
+            <Section title={s.sections.liability}>
+                <div className="space-y-4 text-stone-700 leading-relaxed text-lg max-w-3xl">
+                    <p>{s.liabilityParagraphs[0]}</p>
+                    <p>{s.externalLinksParagraph}</p>
+                    <p>{s.liabilityParagraphs[1]}</p>
                 </div>
-            </div>
-        </Section>
-
-        <Section title="Verantwortlich für den Inhalt">
-            <p className="text-stone-700 text-lg">
-                {FINANZ.responsibleEditor} (Anschrift wie oben) gemäß § 18
-                Abs. 2 MStV
-            </p>
-        </Section>
-
-        <Section title="EU-Streitbeilegung" bg="page">
-            <p className="text-stone-700 leading-relaxed text-lg max-w-3xl">
-                Die Europäische Kommission stellt eine Plattform zur
-                Online-Streitbeilegung bereit:{' '}
-                <a
-                    href="https://ec.europa.eu/consumers/odr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand-red"
-                >
-                    ec.europa.eu/consumers/odr
-                </a>
-                . Wir sind nicht verpflichtet und nicht bereit, an
-                Streitbeilegungs­verfahren vor einer Verbraucherschlichtungs­stelle
-                teilzunehmen.
-            </p>
-        </Section>
-
-        <Section title="Haftungs- und Urheberhinweis">
-            <div className="space-y-4 text-stone-700 leading-relaxed text-lg max-w-3xl">
-                <p>
-                    Der Autor übernimmt keinerlei Gewähr für die Aktualität,
-                    Korrektheit, Vollständigkeit oder Qualität der
-                    bereitgestellten Informationen. Haftungsansprüche gegen
-                    den Autor, welche sich auf Schäden materieller oder
-                    ideeller Art beziehen, die durch die Nutzung oder
-                    Nichtnutzung der dargebotenen Informationen verursacht
-                    wurden, sind grundsätzlich ausgeschlossen, sofern nicht
-                    vorsätzliches oder grob fahrlässiges Verschulden
-                    nachweisbar ist.
-                </p>
-                <p>
-                    Externe Links wurden zum Zeitpunkt der Verlinkung auf
-                    rechtswidrige Inhalte überprüft. Für den Inhalt der
-                    verlinkten Seiten sind ausschließlich deren Betreiber
-                    verantwortlich.
-                </p>
-                <p>
-                    Alle Rechte an den vom Autor selbst erstellten Inhalten
-                    bleiben vorbehalten. Eine Vervielfältigung oder Verwendung
-                    in anderen elektronischen oder gedruckten Publikationen
-                    ist ohne ausdrückliche Zustimmung des Autors nicht
-                    gestattet.
-                </p>
-            </div>
-        </Section>
-    </>
-)
+            </Section>
+        </>
+    )
+}
 
 export default Impressum

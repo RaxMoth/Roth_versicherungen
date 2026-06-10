@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
+import { COMMON } from '@/content'
 
 interface LayoutProps {
-    children: React.ReactNode
+    children: ReactNode
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout = ({ children }: LayoutProps) => {
     const { pathname } = useLocation()
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -16,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className="min-h-screen flex flex-col bg-brand-page">
             <a href="#main" className="skip-link">
-                Zum Hauptinhalt springen
+                {COMMON.nav.skipToContent}
             </a>
             <Header />
             <main id="main" className="flex-1 pt-[5.5rem] md:pt-[6.5rem]">
