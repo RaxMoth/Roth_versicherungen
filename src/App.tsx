@@ -29,6 +29,7 @@ const Team = lazy(() => import('@/pages/Team'))
 const Kontakt = lazy(() => import('@/pages/Kontakt'))
 const OnlineBeratung = lazy(() => import('@/pages/OnlineBeratung'))
 const ServiceApp = lazy(() => import('@/pages/ServiceApp'))
+const Sitemap = lazy(() => import('@/pages/Sitemap'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 
 const PageFallback = () => (
@@ -120,6 +121,10 @@ const App = () => (
                         <Route
                             path={ROUTES.SERVICE_APP}
                             element={<ServiceApp />}
+                        />
+                        <Route
+                            path={ROUTES.SITEMAP}
+                            element={<Sitemap />}
                         />
 
                         <Route path="*" element={<NotFound />} />

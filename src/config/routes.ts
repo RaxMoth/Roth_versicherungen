@@ -36,4 +36,5 @@ export const ROUTES = {
     KONTAKT: '/kontakt-anfahrt',
     ONLINE: '/online-beratung',
     SERVICE_APP: '/service-app',
+    SITEMAP: '/sitemap',
 } as const

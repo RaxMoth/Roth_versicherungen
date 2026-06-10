@@ -27,6 +27,7 @@ const linksAllgemein: [string, string][] = [
     [ROUTES.KONTAKT, 'Kontakt & Anfahrt'],
     [ROUTES.ONLINE, 'Online Beratung'],
     [ROUTES.SERVICE_APP, 'Service App'],
+    [ROUTES.SITEMAP, 'Sitemap'],
 ]
 
 const Footer = () => (
