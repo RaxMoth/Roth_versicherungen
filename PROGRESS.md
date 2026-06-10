@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last loop run: 2026-06-10T15:25Z
+Last loop run: 2026-06-10T15:40Z
 Stack: react
 
 ## Done
@@ -12,6 +12,7 @@ Stack: react
 - [x] Industry standardization round 1: extracted all strings into `src/content/*`, added `ROUTES` constants, path aliases (`@/`), `usePageMeta` hook, ErrorBoundary, React.lazy code splitting, component folder structure (layout / sections / team / forms), extracted ContactForm
 - [x] Sitemap page at `/sitemap` mirroring the live site — built from `ROUTES` so it stays in sync
 - [x] `sitemap.xml` + `robots.txt` — sitemap.xml generated at build time from `ROUTES` via a small Vite plugin in `vite.config.ts`; robots.txt in `public/` references it
+- [x] Remove dead template scaffolding — `src/components/UI/` (Button, Badge, Alert, Input, Container), `src/stores/`, `Button.test.tsx`, and `zustand` dep removed. No bundle/runtime changes (it was already unused).
 
 ## In Progress
 
@@ -32,8 +33,6 @@ Stack: react
 
 ## Tech Debt / Improvements
 
-- [ ] Unused `src/components/UI/` library (Button, Badge, Alert, Input, Container) — either delete or refactor pages to use it. Currently dead code from the template.
-- [ ] Zustand installed but unused — remove from package.json OR adopt for global state (none needed yet).
 - [ ] ContactForm has `noValidate` + `required` attributes — `noValidate` disables HTML5 validation popups so `required` is partially decorative. Decide: either remove `noValidate` or do JS validation.
 - [ ] Only template's `Button.test.tsx` exists; no tests for `usePageMeta`, `ROUTES`, or any page. Add 3-5 smoke tests with Vitest + React Testing Library.
 - [ ] No image optimization beyond `loading="lazy"` — could add responsive `srcset` for hero images (`roth-versicherungen-hero.png` is 541 kB).
