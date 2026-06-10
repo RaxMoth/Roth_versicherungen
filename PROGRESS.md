@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last loop run: 2026-06-10T15:09Z
+Last loop run: 2026-06-10T15:25Z
 Stack: react
 
 ## Done
@@ -11,6 +11,7 @@ Stack: react
 - [x] Both entities have their own Impressum, Datenschutz, Erstinformation with the correct legal data (HRB, USt-ID, Vermittlerregister-Nr, §34c for Finanz)
 - [x] Industry standardization round 1: extracted all strings into `src/content/*`, added `ROUTES` constants, path aliases (`@/`), `usePageMeta` hook, ErrorBoundary, React.lazy code splitting, component folder structure (layout / sections / team / forms), extracted ContactForm
 - [x] Sitemap page at `/sitemap` mirroring the live site — built from `ROUTES` so it stays in sync
+- [x] `sitemap.xml` + `robots.txt` — sitemap.xml generated at build time from `ROUTES` via a small Vite plugin in `vite.config.ts`; robots.txt in `public/` references it
 
 ## In Progress
 
@@ -20,7 +21,6 @@ Stack: react
 
 - [ ] Google Bewertung embed on homepage — live site has it; needs a Google Places API key or hard-coded reviews snapshot
 - [ ] Cyber-Police downloads — `Broschüre öffnen` / `PDF herunterladen` buttons need real PDFs
-- [ ] Sitemap.xml generated at build time — current `/sitemap` is the HTML page only; search engines also want the XML
 
 ## Proposed (NOT approved — do not implement)
 
