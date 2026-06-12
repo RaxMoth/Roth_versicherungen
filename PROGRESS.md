@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last loop run: 2026-06-10T15:40Z
+Last loop run: 2026-06-12T13:30Z
 Stack: react
 
 ## Done
@@ -13,6 +13,7 @@ Stack: react
 - [x] Sitemap page at `/sitemap` mirroring the live site — built from `ROUTES` so it stays in sync
 - [x] `sitemap.xml` + `robots.txt` — sitemap.xml generated at build time from `ROUTES` via a small Vite plugin in `vite.config.ts`; robots.txt in `public/` references it
 - [x] Remove dead template scaffolding — `src/components/UI/` (Button, Badge, Alert, Input, Container), `src/stores/`, `Button.test.tsx`, and `zustand` dep removed. No bundle/runtime changes (it was already unused).
+- [x] Smoke tests for shared infrastructure — `routes.test.ts` (4 tests: canonical paths, format, no duplicates, parallel V/F legal triads) and `usePageMeta.test.ts` (4 tests: title suffix, description, no-dup meta tag). Vitest now resolves `@/` path alias.
 
 ## In Progress
 
