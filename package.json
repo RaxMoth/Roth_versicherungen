@@ -1,8 +1,8 @@
 {
-    "name": "react-web-template",
+    "name": "roth-versicherungen",
     "private": true,
     "version": "1.0.0",
-    "description": "A clean, reusable React template for building websites",
+    "description": "Website for Roth Versicherungen & Roth Finanz Maklergesellschaft m.b.H. in Langen — React + TypeScript + Vite + Tailwind.",
     "type": "module",
     "scripts": {
         "dev": "vite",

@@ -1,50 +1,88 @@
-# React + TypeScript + Vite
+# Roth Versicherungen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website for **Roth Versicherungen Maklergesellschaft m.b.H.** and **Roth Finanz Maklergesellschaft m.b.H.** in Langen.
 
-Currently, two official plugins are available:
+Built with React 18, TypeScript, Vite 6, Tailwind CSS, React Router 7, and react-helmet-async.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Local development
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
+npm run dev       # → http://localhost:5173
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Scripts
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Vite dev server with HMR |
+| `npm run build` | Type-check + Vite production build (emits `dist/`, including `sitemap.xml`) |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | ESLint over the codebase |
+| `npm test` | Run Vitest once |
+| `npm run test:ui` | Vitest with the interactive UI |
+| `npm run test:coverage` | Vitest with coverage report |
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Project layout
+
 ```
+src/
+├── App.tsx              # Routes (lazy-loaded), ErrorBoundary, Suspense
+├── main.tsx             # Entry
+├── index.css            # Tailwind + Inter / Source Serif Pro fonts
+├── assets/site/         # Real images downloaded from roth-makler.de
+├── components/
+│   ├── layout/          # Layout, Header, Footer
+│   ├── sections/        # PageHero, Section, CallToAction
+│   ├── team/            # Member
+│   ├── forms/           # ContactForm
+│   └── ErrorBoundary.tsx
+├── config/
+│   ├── routes.ts        # ROUTES — single source of truth for paths
+│   └── seo.ts           # SITE config + title builder
+├── content/             # All UI strings, one file per page (German)
+├── hooks/
+│   └── usePageMeta.ts   # Sets <title> + <meta name="description">
+├── pages/               # Route components
+│   ├── versicherungen/  # Roth Versicherungen legal pages
+│   └── finanz/          # Roth Finanz legal pages
+└── utils/
+    ├── company.ts       # COMPANY + TEAM data + re-exports IMAGES
+    └── images.ts        # Local image imports for Vite
+```
+
+## Key conventions
+
+- **Paths**: never hard-code a URL — use `ROUTES.*` from `@/config/routes`.
+- **Strings**: never inline UI text — add it to `src/content/<page>.ts` and import.
+- **SEO**: every page calls `usePageMeta({ title, description })` at the top.
+- **Path alias**: `@/foo` resolves to `src/foo` (configured in `tsconfig.app.json`, `vite.config.ts`, `vitest.config.ts`).
+- **Lazy loading**: every route is `React.lazy()` in `App.tsx` so initial JS stays small.
+
+## Build pipeline highlights
+
+- `tsc -b` first → strict TypeScript with `noUnusedLocals`, `strict`, etc.
+- Vite emits per-route chunks (Suspense fallback in `App.tsx`).
+- Custom `sitemapPlugin` in `vite.config.ts` walks `ROUTES` and emits `dist/sitemap.xml` on `closeBundle`. `public/robots.txt` references it.
+
+## Editing content
+
+To change wording on any page, edit the matching file in `src/content/`. Pages are thin JSX that consume these objects, so prose updates rarely touch React code.
+
+## Testing
+
+`npm test` runs Vitest in JSDOM. Coverage:
+
+- `src/__tests__/config/routes.test.ts` — route shape invariants
+- `src/__tests__/hooks/usePageMeta.test.ts` — meta tag behaviour
+- `src/__tests__/useLocalStorage.test.ts` — legacy template hook
+
+## Progress tracking
+
+See `PROGRESS.md` for the current backlog, tech debt, and proposed work. Maintained by `.claude/commands/loop.md`.
+
+## Status
+
+Two legally separate Maklergesellschaften share the same office. Each has its own Impressum, Datenschutz and Erstinformation (different HRB / USt-IdNr / Vermittlerregister-Nr / aufsichtsbehörden) under `/roth-versicherungen/*` and `/roth-finanz/*`. Roth Versicherungen since 1907; Roth Finanz since 1970.

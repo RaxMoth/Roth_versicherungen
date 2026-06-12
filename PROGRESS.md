@@ -1,6 +1,6 @@
 # Progress Tracker
 
-Last loop run: 2026-06-12T13:30Z
+Last loop run: 2026-06-12T13:45Z
 Stack: react
 
 ## Done
@@ -14,6 +14,7 @@ Stack: react
 - [x] `sitemap.xml` + `robots.txt` — sitemap.xml generated at build time from `ROUTES` via a small Vite plugin in `vite.config.ts`; robots.txt in `public/` references it
 - [x] Remove dead template scaffolding — `src/components/UI/` (Button, Badge, Alert, Input, Container), `src/stores/`, `Button.test.tsx`, and `zustand` dep removed. No bundle/runtime changes (it was already unused).
 - [x] Smoke tests for shared infrastructure — `routes.test.ts` (4 tests: canonical paths, format, no duplicates, parallel V/F legal triads) and `usePageMeta.test.ts` (4 tests: title suffix, description, no-dup meta tag). Vitest now resolves `@/` path alias.
+- [x] Project identity — `package.json` renamed to `roth-versicherungen` with a real description; `README.md` rewritten with project-specific docs (layout, conventions, scripts, build pipeline).
 
 ## In Progress
 
@@ -35,6 +36,9 @@ Stack: react
 ## Tech Debt / Improvements
 
 - [ ] ContactForm has `noValidate` + `required` attributes — `noValidate` disables HTML5 validation popups so `required` is partially decorative. Decide: either remove `noValidate` or do JS validation.
+- [ ] Image optimization — `roth-versicherungen-hero.png` is 541 kB. Consider WebP fallback, responsive `srcset`, or a `vite-imagetools` plugin.
+- [ ] Prettier config + `.editorconfig` — formatting drift visible in `altersversorgung.ts` (linter changed single quotes to double).
+- [ ] Husky pre-commit hook running `npm run lint && npm test`.
 - [ ] Only template's `Button.test.tsx` exists; no tests for `usePageMeta`, `ROUTES`, or any page. Add 3-5 smoke tests with Vitest + React Testing Library.
 - [ ] No image optimization beyond `loading="lazy"` — could add responsive `srcset` for hero images (`roth-versicherungen-hero.png` is 541 kB).
 - [ ] No Prettier config — formatting drift (e.g. mixed single/double quotes after linter ran on `altersversorgung.ts`). Add `.prettierrc`.
