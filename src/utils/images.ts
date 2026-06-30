@@ -1,29 +1,29 @@
 // Local images downloaded directly from roth-makler.de.
 // Each export is an imported asset URL Vite resolves at build time.
 
-import home from "../assets/site/home-hero.png";
-import versicherungenHero from "../assets/site/roth-versicherungen-hero.png";
-import versicherungenContent from "../assets/site/roth-versicherungen-content.jpeg";
-import firmenkunden from "../assets/site/firmenkunden.jpg";
-import cyberPolice from "../assets/site/cyber-police.jpg";
-import privatkunden from "../assets/site/privatkunden.jpg";
-import tier from "../assets/site/tier-1.jpg";
-import wichtigeHinweise from "../assets/site/wichtige-hinweise.jpg";
-import jobs from "../assets/site/jobs.jpg";
-import finanzHero from "../assets/site/roth-finanz-hero.jpg";
-import finanzLogo from "../assets/site/roth-finanz-content.png";
-import altersversorgung from "../assets/site/altersversorgung.jpg";
-import sterbegeld from "../assets/site/sterbegeld.jpg";
-import onlineBeratung from "../assets/site/online-beratung.jpg";
-import serviceApp1 from "../assets/site/service-app-1.jpg";
-import kontakt from "../assets/site/kontakt.jpg";
+import home from "../assets/home-hero.png";
+import versicherungenHero from "../assets/roth-versicherungen-hero.png";
+import versicherungenContent from "../assets/roth-versicherungen-content.jpeg";
+import firmenkunden from "../assets/firmenkunden.jpg";
+import cyberPolice from "../assets/cyber-police.jpg";
+import privatkunden from "../assets/privatkunden.jpg";
+import tier from "../assets/tier-1.jpg";
+import wichtigeHinweise from "../assets/wichtige-hinweise.jpg";
+import jobs from "../assets/jobs.jpg";
+import finanzHero from "../assets/roth-finanz-hero.jpg";
+import finanzLogo from "../assets/roth-finanz-content.png";
+import altersversorgung from "../assets/altersversorgung.jpg";
+import sterbegeld from "../assets/sterbegeld.jpg";
+import onlineBeratung from "../assets/online-beratung.jpg";
+import serviceApp1 from "../assets/service-app-1.jpg";
+import kontakt from "../assets/kontakt.jpg";
 
 // Team
-import carlo from "../assets/site/team/carlo.jpg";
-import petra from "../assets/site/petra.png";
-import williams from "../assets/site/team/william.jpg";
-import sabrina from "../assets/site/team/sabrina.jpg";
-import dogs from "../assets/site/dogs.jpg";
+import carlo from "../assets/team/carlo.jpg";
+import petra from "../assets/petra.png";
+import williams from "../assets/team/william.jpg";
+import sabrina from "../assets/team/sabrina.jpg";
+import dogs from "../assets/dogs.jpg";
 
 export const IMAGES = {
     home,

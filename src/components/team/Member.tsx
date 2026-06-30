@@ -6,7 +6,6 @@ interface MemberProps {
     imageSrc: string;
     qualifications?: readonly string[];
     focusAreas?: readonly string[];
-    /** When false, drops h-full so the image keeps its natural height. */
     full?: boolean;
 }
 
