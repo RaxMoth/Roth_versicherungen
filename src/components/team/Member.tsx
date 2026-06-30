@@ -1,11 +1,13 @@
-import { TEAM } from '@/content'
+import { TEAM } from "@/content";
 
 interface MemberProps {
-    name: string
-    title: string
-    imageSrc: string
-    qualifications?: readonly string[]
-    focusAreas?: readonly string[]
+    name: string;
+    title: string;
+    imageSrc: string;
+    qualifications?: readonly string[];
+    focusAreas?: readonly string[];
+    /** When false, drops h-full so the image keeps its natural height. */
+    full?: boolean;
 }
 
 const Member = ({
@@ -14,11 +16,12 @@ const Member = ({
     imageSrc,
     qualifications,
     focusAreas,
+    full,
 }: MemberProps) => (
     <article className="bg-white shadow-card hover:shadow-card-hover transition overflow-hidden group rounded-md">
         <div className="aspect-[4/5] overflow-hidden bg-stone-100">
             <img
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                className={`w-full ${full ? "h-full" : ""} object-cover object-center group-hover:scale-105 transition-transform duration-700`}
                 src={imageSrc}
                 alt={name}
                 loading="lazy"
@@ -44,11 +47,11 @@ const Member = ({
             )}
         </div>
     </article>
-)
+);
 
 interface MemberListProps {
-    label: string
-    items: readonly string[]
+    label: string;
+    items: readonly string[];
 }
 
 const MemberList = ({ label, items }: MemberListProps) => (
@@ -57,11 +60,11 @@ const MemberList = ({ label, items }: MemberListProps) => (
             {label}
         </h4>
         <ul className="space-y-1 text-sm text-stone-700">
-            {items.map(item => (
+            {items.map((item) => (
                 <li key={item}>• {item}</li>
             ))}
         </ul>
     </div>
-)
+);
 
-export default Member
+export default Member;
