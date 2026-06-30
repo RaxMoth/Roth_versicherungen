@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Phone, Mail, Clock, ChevronDown } from 'lucide-react'
 import logoImage from '@/assets/Roth_versicherungen_logo.png'
+import finanzLogo from '@/assets/roth-finanz-content.png'
 import { COMPANY } from '@/utils/company'
 import { ROUTES } from '@/config/routes'
 import { COMMON } from '@/content'
@@ -99,6 +100,8 @@ const Header = () => {
     const toggle = (k: DropdownKey) =>
         setOpenKey(prev => (prev === k ? null : k))
 
+    const isFinanz = pathname.startsWith(ROUTES.FINANZ.INDEX)
+
     return (
         <header
             ref={navRef}
@@ -118,11 +121,13 @@ const Header = () => {
                         aria-label={COMMON.nav.homeLogo}
                     >
                         <img
-                            src={logoImage}
+                            src={isFinanz ? finanzLogo : logoImage}
                             alt=""
                             className="h-12 md:h-14 w-auto"
                         />
-                        <span className="sr-only">Roth Versicherungen</span>
+                        <span className="sr-only">
+                            {isFinanz ? 'Roth Finanz' : 'Roth Versicherungen'}
+                        </span>
                     </Link>
 
                     <button
