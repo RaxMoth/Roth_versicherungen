@@ -37,7 +37,6 @@ const Team = () => {
                         name={members.williams.name}
                         title={members.williams.title}
                         imageSrc={TEAM_PHOTOS.williams}
-                        qualifications={members.williams.qualifications}
                         focusAreas={members.williams.focusAreas}
                         full={true}
                     />
