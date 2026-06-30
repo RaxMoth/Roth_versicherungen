@@ -19,7 +19,7 @@ import serviceApp1 from "../assets/service-app-1.jpg";
 import kontakt from "../assets/kontakt.jpg";
 
 // Team
-import carlo from "../assets/team/carlo.jpg";
+import carlo from "../assets/carlo.jpg";
 import petra from "../assets/petra.png";
 import williams from "../assets/team/william.jpg";
 import sabrina from "../assets/team/sabrina.jpg";
