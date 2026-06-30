@@ -36,11 +36,6 @@ export const TEAM = {
         williams: {
             name: "Chris Williams",
             title: "Kaufmann für Versicherungen und Finanzen",
-            qualifications: [
-                "Kaufmann für Versicherungen und Finanzen",
-                "Staatl. geprüfter Wirtschaftsfachwirt IHK",
-                "Fachmann für betriebliche Altersvorsorge",
-            ],
             focusAreas: [
                 "Betriebliche Altersvorsorge",
                 "Risikoanalyse",
@@ -64,7 +59,6 @@ export const TEAM = {
             name: "Caterina Trainito",
             title: "Kauffrau für Versicherungen und Finanzen",
             focusAreas: [
-                "Schwerpunkt",
                 "Sachversicherungen",
                 "Kfz-Versicherungen",
                 "​Schadensbearbeitung",

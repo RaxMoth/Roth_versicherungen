@@ -1,6 +1,3 @@
-// Local images downloaded directly from roth-makler.de.
-// Each export is an imported asset URL Vite resolves at build time.
-
 import home from "../assets/home-hero.png";
 import versicherungenHero from "../assets/roth-versicherungen-hero.png";
 import versicherungenContent from "../assets/roth-versicherungen-content.jpeg";
